@@ -1,0 +1,15 @@
+{
+    "title": "Group Example",
+    "coords": {
+        "lat": 0.5,
+        "lng": 0.6
+    },
+    "subtitle": "",
+    "published": "2022-09-16",
+    "folder": "images/groupexample/",
+    "thumbnail": "thumbnail.jpg",
+    "isPage": true,
+    "targetPage": [
+        "index"
+    ]
+}

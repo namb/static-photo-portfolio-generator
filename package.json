@@ -1,0 +1,51 @@
+{
+  "name": "static-photo-portfolio-generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test:all": "node nodeScripts/test.js",
+    
+    "css:build": "sass ./assets/sass/main.scss ./public/assets/css/main.css --no-source-map --style=compressed",
+    "css:dev": "sass ./assets/sass/main.scss ./public/assets/css/main.css --no-source-map",
+
+    "collections:sync": "node nodeScripts/syncAll.js",
+    "collections:sync:rename": "node nodeScripts/syncAll.js --rename",
+    "collections:generate": "node ./nodeScripts/generateCollectionPages.js",    
+    "collections:build": "npm run collections:sync && npm run collections:generate",
+
+    "groups:single": "node ./nodeScripts/generateGroupPage.js",
+    "groups:generate": "node ./nodeScripts/generateAllGroupPages.js",
+    "groups:build": "npm run groups:generate",
+
+    "pages:static": "node ./nodeScripts/generateStaticPages.js",    
+    "pages:index": "node ./nodeScripts/generateIndex.js",
+    "pages:sitemap": "node ./nodeScripts/generateSitemap.js",
+
+    "build:site": "npm run pages:static && npm run collections:build && npm run groups:build && npm run pages:index",
+    "build:site-force": "npm run pages:static -- force && npm run collections:build -- force && npm run groups:build -- force && npm run pages:index -- force",
+
+    "build:dev": "npm run css:dev && npm run build:site",
+    "build:dev-force": "npm run css:dev && npm run build:site-force",
+
+    "build": "npm run css:build && npm run build:site-force && npm run pages:sitemap"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namb/static-photo-portfolio-generator.git"
+  },
+  "keywords": ["static site", "portfolio", "photography", "generator", "nodejs"],
+  "author": "namb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/namb/static-photo-portfolio-generator/issues"
+  },
+  "homepage": "https://github.com/namb/static-photo-portfolio-generator#readme",
+  "description": "Generador de sitios estáticos para portafolios fotográficos a partir de un archivo de configuración.",
+  "type": "module",
+  "devDependencies": {
+    "sass": "^1.89.0"
+  },
+  "dependencies": {
+    "image-size": "^2.0.2"
+  }
+}

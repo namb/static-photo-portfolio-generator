@@ -1,0 +1,16 @@
+{
+    "title": "Example",
+    "coords": {
+        "lat": 1.0,
+        "lng": 2.0
+    },
+    "subtitle": "Subtitle",
+    "camera": "",
+    "date": "Febrero de 2020",
+    "published": "2020-02-15",
+    "folder": "images/example/",
+    "targetPage": [
+        "index",
+        "groupexample"
+    ]
+}

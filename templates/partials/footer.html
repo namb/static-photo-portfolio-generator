@@ -1,0 +1,77 @@
+                    <footer id="footer">
+                    <div class="inner">
+                        <section>
+                        <h2>Follow</h2>
+                        <div class="row">
+                            <!-- SOCIALLINKS -->
+                        </div>
+                        </section>
+                        <!-- COPYRIGHT -->
+                    </div>
+                    </footer>
+                    <!-- SCROLL_TOP_START -->
+                    <button id="scrollToTop" aria-label="Volver arriba">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
+                    </button>
+
+                    <script>
+                    const scrollToTopBtn = document.getElementById('scrollToTop');
+                    const header = document.querySelector('header'); // Ajusta si tu header tiene otra etiqueta o clase
+                    let lastScroll = 0;
+                    window.addEventListener('scroll', () => {
+                      const currentScroll = window.pageYOffset;
+
+                      // Mostrar/ocultar botón
+                      if (currentScroll > 200) {
+                        scrollToTopBtn.classList.add('visible');
+                      } else {
+                        scrollToTopBtn.classList.remove('visible');
+                      }
+
+                      // Ocultar header si haces scroll hacia abajo
+                      if (currentScroll > lastScroll) {
+                        header?.classList.add('hidden-header');
+                      } else {
+                        header?.classList.remove('hidden-header');
+                      }
+
+                      lastScroll = currentScroll;
+                    });
+
+                    // Volver arriba al hacer clic
+                    scrollToTopBtn.addEventListener('click', () => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    });
+                    </script>
+                    <!-- SCROLL_TOP_END -->
+                    <!-- DARK MODE SCRIPT-->
+                    <script>
+                    window.addEventListener('DOMContentLoaded', () => {
+                        const el = document.querySelector('.header-icons-group');
+                        if (el) {
+                          requestAnimationFrame(() => {
+                            el.classList.add('animate');
+                          });
+                        }
+                      });
+                      const toggleBtn = document.getElementById('theme-toggle');
+                      const savedTheme = localStorage.getItem('theme');
+                      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+                      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                        document.body.classList.add('dark-mode');
+                        toggleBtn.checked = true;
+                      }
+
+                      // Toggle manual al hacer click
+                      toggleBtn.addEventListener('click', () => {
+                        console.log("click event");
+                        document.body.classList.toggle('dark-mode');
+                        localStorage.setItem('theme', toggleBtn.checked ? 'dark' : 'light');
+                      });
+                    </script>
+                    <!-- OWN_SCRIPT_FOOTER -->  

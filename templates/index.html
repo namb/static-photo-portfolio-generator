@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title><!-- METATITLE --></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="icon" href="<!-- FAVICON -->" type="image/x-icon">
+
+		<!-- Opengraph metas -->
+		<meta name="description" content=<!-- METADESCRIPTION -->>
+
+		<!-- OPEN GRAPH (Facebook, WhatsApp, LinkedIn) -->
+		<meta property="og:title" content="<!-- OGTITLE -->" />
+		<meta property="og:description" content="<!-- OGDESCRIPTION -->" />
+		<meta property="og:image" content="<!-- OGIMAGE -->" />
+		<meta property="og:url" content="<!-- OGURL -->" />
+		<meta property="og:type" content="website" />
+
+		<!-- TWITTER CARDS -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content=<!-- OGTITLE --> />
+		<meta name="twitter:description" content=<!-- OGDESCRIPTION --> />
+		<meta name="twitter:image" content=<!-- OGIMAGE --> />
+
+		<!-- Styles -->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				@@header
+
+				<!-- Menu -->
+				@@menu					
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<div class="index-description-row">
+								<div class="col-8 col-12-small">
+								<p class="m-0"><!-- METADESCRIPTION --></p>
+								</div>
+								<div class="col-2 col-6-small display-none">
+								</div>
+								<!-- SHUFFLE_START -->
+								<div class="col-2 col-6-small button-shuffle">
+								<button id="shuffle-btn" class="button small icon solid fa-dice">Shuffle</button>
+								</div>
+								<!-- SHUFFLE_END -->
+							</div>
+
+							<section id="cards-container" class="tiles"><!-- CARDS --></section>
+							
+						</div>
+					</div>
+					<!-- MAP_START -->
+					<div id="map" style="height: 400px; margin-top: 2rem;"></div>
+					<!-- MAP_END -->
+				<!-- Footer -->
+				@@footer
+
+			</div>
+			<script src="assets/js/home.js"></script>
+			<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+			<!-- MAP_SCRIPT_START -->
+			<script>
+				const map = L.map('map').setView([41.9, 12.5], 4); // Centrado aproximado en Europa
+
+				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+					attribution: '&copy; OpenStreetMap contributors'
+				}).addTo(map);
+				<!-- MAPMARKERS -->
+			</script>
+			<!-- MAP_SCRIPT_END -->
+	</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+        <title><!-- METATITLE --></title>
+        <meta name="description" content="<!--METADESCRIPTION-->" />
+		<link rel="icon" href="<!-- FAVICON -->" type="image/x-icon">
+        <meta property="og:title" content="<!--OGTITLE-->" />
+        <meta property="og:description" content="<!--OGDESCRIPTION-->" />
+        <meta property="og:image" content="<!--OGIMAGE-->" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="<!--OGURL-->" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				@@header
+
+				<!-- Menu -->
+				@@menu
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<header class="header-breadcrumb">
+								<!-- BREADCRUMB -->
+							</header>
+							<!-- DESCRIPTION -->
+							<div id="js-loader" class="spinner"></div>
+							<script>
+								document.addEventListener('DOMContentLoaded', () => {
+									const grid = document.getElementById('js-masonry-grid');
+									const loader = document.getElementById('js-loader');
+								
+									// Mostrar el loader y ocultar el grid por defecto
+									loader.classList.remove('display-none');
+									grid.classList.add('display-none');
+								
+									// Deja que el navegador pinte el loader antes de iniciar la carga de imágenes
+									const images = grid.querySelectorAll('img');
+									let loaded = 0;
+							
+									if (images.length === 0) {
+										loader.classList.add('display-none');
+										grid.classList.remove('display-none');
+										return;
+									}
+							
+									images.forEach(img => {
+										if (img.complete) {
+											loaded++;
+											checkDone();
+										} else {
+											img.addEventListener('load', () => {
+												loaded++;
+												checkDone();
+											});
+											img.addEventListener('error', () => {
+												loaded++;
+												checkDone();
+											});
+										}
+									});
+							
+									function checkDone() {
+										if (loaded === images.length) {
+											loader.classList.add('display-none');
+											grid.classList.remove('display-none');
+										}
+									}
+								});
+								</script>								
+							<section id="js-masonry-grid" class="masonry-grid display-none"><!-- GALLERY --></section>
+						</div>
+					</div>
+				<!-- Footer -->
+				@@footer
+			</div>
+		<!-- Scripts -->
+		
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+/test/
+/images/test/
+/collections/test.html
+/node_modules/
+/public/collections/
+*.map
+/public/robots.txt
+/.cache/
+/public/index.html
+/public/sitemap.xml
