@@ -19,38 +19,38 @@
                     </button>
 
                     <script>
-                    const scrollToTopBtn = document.getElementById('scrollToTop');
-                    const header = document.querySelector('header'); // Ajusta si tu header tiene otra etiqueta o clase
-                    let lastScroll = 0;
-                    window.addEventListener('scroll', () => {
-                      const currentScroll = window.pageYOffset;
+                      const scrollToTopBtn = document.getElementById('scrollToTop');
+                      const header = document.querySelector('header'); // Ajusta si tu header tiene otra etiqueta o clase
+                      let lastScroll = 0;
+                      window.addEventListener('scroll', () => {
+                        const currentScroll = window.pageYOffset;
 
-                      // Mostrar/ocultar botón
-                      if (currentScroll > 200) {
-                        scrollToTopBtn.classList.add('visible');
-                      } else {
-                        scrollToTopBtn.classList.remove('visible');
-                      }
+                        // Mostrar/ocultar botón
+                        if (currentScroll > 200) {
+                          scrollToTopBtn.classList.add('visible');
+                        } else {
+                          scrollToTopBtn.classList.remove('visible');
+                        }
 
-                      // Ocultar header si haces scroll hacia abajo
-                      if (currentScroll > lastScroll) {
-                        header?.classList.add('hidden-header');
-                      } else {
-                        header?.classList.remove('hidden-header');
-                      }
+                        // Ocultar header si haces scroll hacia abajo
+                        if (currentScroll > lastScroll) {
+                          header?.classList.add('hidden-header');
+                        } else {
+                          header?.classList.remove('hidden-header');
+                        }
 
-                      lastScroll = currentScroll;
-                    });
+                        lastScroll = currentScroll;
+                      });
 
-                    // Volver arriba al hacer clic
-                    scrollToTopBtn.addEventListener('click', () => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                    });
+                      // Volver arriba al hacer clic
+                      scrollToTopBtn.addEventListener('click', () => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      });
                     </script>
                     <!-- SCROLL_TOP_END -->
                     <!-- DARK MODE SCRIPT-->
                     <script>
-                    window.addEventListener('DOMContentLoaded', () => {
+                      window.addEventListener('DOMContentLoaded', () => {
                         const el = document.querySelector('.header-icons-group');
                         if (el) {
                           requestAnimationFrame(() => {

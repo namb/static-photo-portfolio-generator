@@ -29,58 +29,58 @@
 	</head>
 	<body class="is-preload">
 		<!-- Wrapper -->
-			<div id="wrapper">
+		<div id="wrapper">
 
-				<!-- Header -->
-				@@header
+			<!-- Header -->
+			@@header
 
-				<!-- Menu -->
-				@@menu					
+			<!-- Menu -->
+			@@menu					
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
-							<div class="index-description-row">
-								<div class="col-8 col-12-small">
-								<p class="m-0"><!-- METADESCRIPTION --></p>
-								</div>
-								<div class="col-2 col-6-small display-none">
-								</div>
-								<!-- SHUFFLE_START -->
-								<div class="col-2 col-6-small button-shuffle">
-								<button id="shuffle-btn" class="button small icon solid fa-dice">Shuffle</button>
-								</div>
-								<!-- SHUFFLE_END -->
+			<!-- Main -->
+				<div id="main">
+					<div class="inner">
+						<div class="index-description-row">
+							<div class="col-8 col-12-small">
+							<p class="m-0"><!-- METADESCRIPTION --></p>
 							</div>
-
-							<section id="cards-container" class="tiles"><!-- CARDS --></section>
-							
+							<div class="col-2 col-6-small display-none">
+							</div>
+							<!-- SHUFFLE_START -->
+							<div class="col-2 col-6-small button-shuffle">
+							<button id="shuffle-btn" class="button small icon solid fa-dice">Shuffle</button>
+							</div>
+							<!-- SHUFFLE_END -->
 						</div>
+
+						<section id="cards-container" class="tiles"><!-- CARDS --></section>
+						
 					</div>
-					<!-- MAP_START -->
-					<div id="map" style="height: 400px; margin-top: 2rem;"></div>
-					<!-- MAP_END -->
-				<!-- Footer -->
-				@@footer
+				</div>
+				<!-- MAP_START -->
+				<div id="map" style="height: 400px; margin-top: 2rem;"></div>
+				<!-- MAP_END -->
+			<!-- Footer -->
+			@@footer
 
-			</div>
-			<script src="assets/js/home.js"></script>
-			<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
-			<!-- MAP_SCRIPT_START -->
-			<script>
-				const map = L.map('map').setView([41.9, 12.5], 4); // Centrado aproximado en Europa
+		</div>
+		<script src="assets/js/home.js"></script>
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+		<!-- MAP_SCRIPT_START -->
+		<script>
+			const map = L.map('map').setView([41.9, 12.5], 4); // Centrado aproximado en Europa
 
-				L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-					attribution: '&copy; OpenStreetMap contributors'
-				}).addTo(map);
-				<!-- MAPMARKERS -->
-			</script>
-			<!-- MAP_SCRIPT_END -->
+			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				attribution: '&copy; OpenStreetMap contributors'
+			}).addTo(map);
+			<!-- MAPMARKERS -->
+		</script>
+		<!-- MAP_SCRIPT_END -->
 	</body>
 </html>

@@ -1,44 +1,78 @@
-# 📸 Static Portfolio Generator
+# 📸 static-photo-portfolio-generator
 
-Este proyecto genera un portafolio web estático a partir de metadatos definidos en archivos JavaScript (`data.js` y `siteConfig.js`).
+Generador estático de portafolios fotográficos. Crea una web ligera, rápida y completamente offline a partir de carpetas de imágenes y archivos JSON.
 
-## 🏗️ Estructura del Proyecto
+> ✨ Diseño adaptado a partir de la plantilla [HTML5 UP](https://html5up.net/).
 
-/data
-├─ /collections
-    ├─ configuración de las colecciones
-├─ data.js # Colecciones de imágenes (No tocar: se genera y actualiza automáticamente)
-└─ siteConfig.js # Configuración del sitio
-
-/nodeScripts
-├─ generateIndex.js
-├─ generateStaticPages.js
-├─ generateCollectionPages.js
-├─ generateAllGroupPages.js
-├─ generateGroupPage.js
-├─ generateSitemap.js
-├─ syncAll.js
-└─ templateUtils.js
-
-/public
-└─ (salida generada automáticamente)
-└─ /images # Carpetas de colecciones
-
-/template
-└─ index.html # Plantilla base
-└─ collection.html # Plantilla de Colecciones
-└─ page.html # Plantilla para páginas estáticas
-└─ groupPage.html # Plantilla para grupos de Colecciones
-└─ /partials
-    └─ footer.html
-    └─ header.html
-    └─ menu.html
-/assets
-└─ sass/ # Estilos SCSS
+![screenshot](https://www.sitiodebando.com/images/index.jpg)
 
 ---
 
-## 🚀 Comandos disponibles
+## 🚀 Características
+
+- Genera páginas HTML estáticas para tus colecciones de fotos.
+- Index con miniaturas y ordenación (reciente, aleatorio).
+- Tema claro/oscuro automático.
+- Sin frameworks ni backend, ideal para Netlify o GitHub Pages.
+- Flujo reproducible con un simple archivo JSON.
+- Basado en Node.js – sin dependencias complejas.
+
+---
+
+## 🧰 Requisitos
+
+- Node.js 18 o superior
+- Git
+
+---
+
+## ⚙️ Instalación
+
+```bash
+git clone https://github.com/naamb/static-photo-portfolio-generator.git
+cd static-photo-portfolio-generator
+npm install
+
+## 🏗️ Estructura del Proyecto
+
+static-photo-portfolio-generator/
+├── public/
+│   └── images/
+│       └── mi-coleccion/
+├── data/
+│   └── collections/
+│       └── mi-coleccion.json
+├── templates/
+├── nodeScripts/
+├── siteConfig.js
+├── package.json
+
+---
+
+## 🔄 Flujo de uso
+1. Crea una carpeta con tus imágenes en public/images/mi-coleccion/.
+
+2. Añade los metadatos en un archivo JSON en data/collections/mi-coleccion.json.
+
+3. Procesa las imágenes y actualiza los datos:
+
+```bash
+npm run collections:sync
+
+También puedes renombrar automáticamente las imágenes:
+```bash
+npm run collections:sync:rename
+
+4. Genera las páginas:
+
+```bash
+npm run build:site
+
+5. Abre public/index.html para ver el resultado.
+
+---
+
+## 🧰 Scripts útiles
 
 
 ### 🖼️ Colecciones
@@ -68,36 +102,54 @@ npm run build:site        # Genera todo menos CSS y sitemap
 npm run build:site-force  # Igual que arriba, pero fuerza regeneración (ignora hashes)
 npm run build             # Build completo + sitemap
 
-🌐 Publicación
-El contenido generado en public/ está listo para ser desplegado en cualquier hosting estático (GitHub Pages, Netlify, Vercel, etc.).
+---
 
-📦 Requisitos
-Node.js >= 16
-npm
-Un IDE, tipo VSC
-No es imprescindible, pero una cuenta en github donde poder subir los cambios a un repositorio privado que esté conectado a Netlify facilita mucho la vida.
+## 🧾 Formato de metadatos (ejemplo de JSON para una colección)
 
-Instala dependencias: npm install
+{
+  "title": "Valencia al atardecer",
+  "subtitle": "Colores cálidos junto al mar",
+  "date": "2024-09-10",
+  "location": "Valencia, España",
+  "camera": "Fujifilm X100V",
+  "folder": "valencia",
+  "images": ["001.jpg", "002.jpg", "003.jpg"]
+}
 
-📝 Licencia
-MIT. Usa, adapta y mejora este proyecto libremente.
+---
+
+## 🌐 Deploy recomendado
+Puedes subir la carpeta public/ a servicios como:
+
+- Netlify
+- GitHub Pages
+- Vercel (modo estático)
+
+---
+
+## 📈 Opcional: Analytics con Plausible.io
+Crea una cuenta y dominio en Plausible.
+
+Añade el script de seguimiento en templates/index.html antes de generar el sitio:
+<script async defer data-domain="tu-dominio.com" src="https://plausible.io/js/script.js"></script>
+
+---
+
+## 📝 Licencia
+MIT License © namb
+
+---
+
+## 🤝 Basado en diseño:
+Plantilla original de HTML5 UP
+
+Adaptada para uso sin frameworks
+
+---
 
 🎞️ Hecho con amor por fotógrafos que también escriben código.
 
-### Primeros pasos
-1. Ejecuta **npm install** para instalar las dependencias
-2. Ejecuta **npm run build:dev** para generar los html de test
-3. **Abre** public/index.html en tu navegador para ver los cambios
-
-### 🖼️ Cómo agregar tu primera colección de imágenes
-
-1. **Crea una carpeta** dentro de public/images/ con todas las imágenes que formarán parte de la colección. Por ejemplo: public/images/valencia
-2. **Copia el fichero de ejemplo** desde data/collections/example.json y pégalo en data/collections/, renombrándolo con el mismo nombre que la carpeta. Por ejemplo: valencia.json.
-3. **Rellena los metadatos** en ese archivo (title, description, coords, etc.). Este archivo define el contenido de la página de la colección.
-4. (Opcional) Si quieres renombrar las imágenes como valencia1.jpg, valencia2.jpg, etc., ejecuta: npm run collections:sync:rename
-5. **Genera el sitio** con: npm run build:dev Esto creará o actualizará el archivo index.html y la página HTML de la colección.
-6. **Abre** public/index.html en tu navegador para ver los cambios
-7. Puedes crear un repositorio en github, subir el código y conectarlo con netlify para que la carpeta /public se despliegue en tu sitio.
+---
 
 ### Configuración del sitio (/data/siteConfig.js)
 
