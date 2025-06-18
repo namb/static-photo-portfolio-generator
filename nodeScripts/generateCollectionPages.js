@@ -11,6 +11,7 @@ import { getBreadcrumb } from './templateUtils.js';
 import { ensureGitignoreHas } from './templateUtils.js';
 import { generateCopyright } from './templateUtils.js';
 import { generateMenu } from './templateUtils.js';
+import { generateFriendsLinks } from './templateUtils.js';
 
 // Recogemos force
 const force = process.argv.includes('force');
@@ -112,6 +113,11 @@ for (const [key, collection] of Object.entries(data)) {
     // Elimina el botón scroll to top
     footer = footer.replace(/<!--\s*SCROLL_TOP_START\s*-->[\s\S]*?<!--\s*SCROLL_TOP_END\s*-->/, '');
   }
+
+  if (siteConfig.showFriends !== true) {
+    // Elimina el botón scroll to top
+    footer = footer.replace(/<!--\s*FRIENDS_START\s*-->[\s\S]*?<!--\s*FRIENDS_END\s*-->/, '');
+  }  
   if (siteConfig.ableDarkMode !== true) {
     // Deshabilita dark mode
     header = header.replace(/<!--\s*DARK_MODE_START\s*-->[\s\S]*?<!--\s*DARK_MODE_END\s*-->/, '');
@@ -149,7 +155,9 @@ for (const [key, collection] of Object.entries(data)) {
     TOP_BANNER: siteConfig.topBannerContent,
     COPYRIGHT: generateCopyright(siteConfig.footerCopyright),
     MENU: generateMenu(siteConfig.menu),
-    OWN_SCRIPT_FOOTER: siteConfig.own_script
+    OWN_SCRIPT_FOOTER: siteConfig.own_script,
+    ANALYTICS_SCRIPT_FOOTER: siteConfig.analytics_script,    
+    FRIENDS: generateFriendsLinks(siteConfig.friends)
   };
 
   const html = injectContent(template, replacements);

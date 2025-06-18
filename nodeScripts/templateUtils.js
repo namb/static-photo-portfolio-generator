@@ -10,6 +10,16 @@ export function generateSocialLinks(rrss) {
       .join('');
   }
 
+  export function generateFriendsLinks(friends) {
+    return `
+    <ul class="alt align-right">`+friends
+      .map((f, i) => `<li>
+      <a href="${f.url}" class="text-decoration-none" target="_blank">
+        <span>${f.name}</span>
+      </a></li>`)
+      .join('')+'</ul>';
+  }
+
 export function generateCopyright(footerCopyright) {
   return '<ul class="copyright">'+footerCopyright
     .map((r) => `
@@ -30,9 +40,10 @@ export function generateMenu(menu) {
 } 
 
 export function computePageHash(siteConfig, contentKey) {
+  const page = siteConfig.find(p => p.key === contentKey);
     const relevantData = {
       configKey: contentKey,
-      configValue: siteConfig[contentKey],
+      configValue: page,
     };
     const json = JSON.stringify(relevantData);
     return crypto.createHash('sha256').update(json).digest('hex');

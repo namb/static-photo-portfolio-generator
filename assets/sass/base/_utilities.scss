@@ -252,7 +252,9 @@ $font-weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+ padding: 0px;
+  width: 50px;
+  height: 50px;
   @include breakpoint('<=small') {
     padding: 20px 10px;
   }
@@ -331,6 +333,11 @@ $font-weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
   font-size: 14px;
   font-family: sans-serif;
   white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  &.visible{
+    opacity: 1;
+  }
   @include breakpoint('<=small') {
     left:67%;
     padding: 8px 20px;
@@ -458,20 +465,53 @@ input:checked + .slider::before {
   transform: translateX(24px);
 }
 
-#bdsBanner{
+#topBanner{
   width:100%;
   background-color: #f2849e;
   top:0px;
   display: flex;
   justify-content: center;
+  padding: 0px 30px;
+  text-align: center;
 }
 
-#bdsBanner a {
+#topBanner a {
   color: white;
   padding: 6px 0px;
   font-size: 0.8em;
   font-weight: 600;  
   &:hover{
     color:white!important;
+  }
+}
+.footer_friends_section{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 14px;
+  @include breakpoint('<=small') {
+    align-items: center;
+  }
+}
+.alt{ 
+  text-align: right;
+  @include breakpoint('<=small') {
+    display: flex;
+    align-items: flex-end;
+    gap: 0px 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  li {
+    @include breakpoint('<=small') {
+      border-top:none!important;
+    }
+  }
+}
+footer {
+  h2 {
+    @include breakpoint('<=small') {
+      margin-bottom:1em;
+    }
   }
 }

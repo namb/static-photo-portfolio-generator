@@ -10,6 +10,7 @@ import { injectContent } from './templateUtils.js';
 import { ensureGitignoreHas } from './templateUtils.js';
 import { generateCopyright } from './templateUtils.js';
 import { generateMenu } from './templateUtils.js';
+import { generateFriendsLinks } from './templateUtils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -38,7 +39,7 @@ async function generateStaticPages() {
 
     const outputPath = path.join(__dirname, '../public', file);
     const cachePath = path.join(__dirname, '../.cache', `${key}.hash`);
-    const currentHash = computePageHash(content);
+    const currentHash = computePageHash(siteConfig.staticPages, key);
     let cachedHash = '';
 
     if (fs.existsSync(cachePath)) {
@@ -62,6 +63,10 @@ async function generateStaticPages() {
       // Elimina el botón scroll to top
       footer = footer.replace(/<!--\s*SCROLL_TOP_START\s*-->[\s\S]*?<!--\s*SCROLL_TOP_END\s*-->/, '');
     }
+    if (siteConfig.showFriends !== true) {
+      // Elimina el botón scroll to top
+      footer = footer.replace(/<!--\s*FRIENDS_START\s*-->[\s\S]*?<!--\s*FRIENDS_END\s*-->/, '');
+    }     
     if (siteConfig.ableDarkMode !== true) {
       // Deshabilita dark mode
       header = header.replace(/<!--\s*DARK_MODE_START\s*-->[\s\S]*?<!--\s*DARK_MODE_END\s*-->/, '');
@@ -90,7 +95,9 @@ async function generateStaticPages() {
       TOP_BANNER: siteConfig.topBannerContent,
       COPYRIGHT: generateCopyright(siteConfig.footerCopyright),
       MENU: generateMenu(siteConfig.menu),
-      OWN_SCRIPT_FOOTER: siteConfig.own_script
+      OWN_SCRIPT_FOOTER: siteConfig.own_script,
+      ANALYTICS_SCRIPT_FOOTER: siteConfig.analytics_script,
+      FRIENDS: generateFriendsLinks(siteConfig.friends)
     };
 
     const resultHtml = injectContent(template, replacements);

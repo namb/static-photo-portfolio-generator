@@ -19,6 +19,11 @@ export const siteConfig = {
     [
         { name: "RS name", url: "RS LINK" }
     ],
+    showFriends: true,
+    friends: 
+    [
+        { name: "BFF", url: "https://" }
+    ],
     staticPages: [
         {
 			key: 'aboutme',
@@ -39,5 +44,6 @@ export const siteConfig = {
     own_script: `
     <script>
     
-    </script>`
+    </script>`,
+    analytics_script:` `
 }
